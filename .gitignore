@@ -1,0 +1,12 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+node_modules/
+target/
+dist/
+build/
+.aegis/
+.codex/
+.claude/
+*.log

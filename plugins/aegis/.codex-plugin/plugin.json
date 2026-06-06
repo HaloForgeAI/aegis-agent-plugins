@@ -1,0 +1,43 @@
+{
+  "name": "aegis",
+  "version": "0.2.1",
+  "description": "Aegis chief-of-staff workflows for Codex: operate the Aegis MCP tools, manage durable work, review status, and diagnose Gateway/local worker readiness.",
+  "author": {
+    "name": "HaloForgeAI",
+    "url": "https://github.com/HaloForgeAI"
+  },
+  "homepage": "https://github.com/HaloForgeAI/aegis-agent-plugins/tree/main/plugins/aegis",
+  "repository": "https://github.com/HaloForgeAI/aegis-agent-plugins",
+  "license": "MIT",
+  "keywords": [
+    "aegis",
+    "chief-of-staff",
+    "project-management",
+    "mcp",
+    "agent-skills",
+    "gateway"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Aegis",
+    "shortDescription": "Operate Aegis work, reports, Gateway, and local workers from Codex.",
+    "longDescription": "Aegis gives Codex reusable chief-of-staff workflows backed by the Aegis MCP server. Use it to inspect and clean the board, capture durable work, assign real or virtual members, dispatch Aegis Coder work, review memory candidates, and diagnose Gateway or local worker readiness without turning ordinary chat into work items.",
+    "developerName": "HaloForgeAI",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/HaloForgeAI/aegis-agent-plugins",
+    "defaultPrompt": [
+      "Use Aegis to brief current work.",
+      "Diagnose Aegis Gateway readiness.",
+      "Clean non-work items from Aegis."
+    ],
+    "brandColor": "#2563EB",
+    "composerIcon": "./assets/aegis-icon.svg",
+    "logo": "./assets/aegis-mascot.png",
+    "screenshots": []
+  }
+}

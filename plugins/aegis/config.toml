@@ -1,0 +1,23 @@
+# Codex configuration for Aegis
+#
+# Copy the block below into your ~/.codex/config.toml (or merge it). It registers
+# the Aegis MCP server so Codex can capture, track, and report on team work
+# through the aegis_* tools.
+#
+# ---------------------------------------------------------------------------
+# Option A (recommended): local stdio server via the `aegis-mcp` binary.
+# Build it once with `cargo install --path crates/aegis-mcp` (or `cargo build
+# -p aegis-mcp`) and make sure it is on your PATH.
+# ---------------------------------------------------------------------------
+[mcp_servers.aegis]
+command = "aegis-mcp"
+# The MCP server talks to the same storage/config as the Aegis server; point it
+# at your data via the AEGIS_* environment variables your deployment uses.
+# env = { AEGIS_SQLITE_PATH = "/path/to/aegis.db" }
+
+# ---------------------------------------------------------------------------
+# Option B: remote Aegis server over MCP HTTP+SSE (URL + bearer).
+# ---------------------------------------------------------------------------
+# [mcp_servers.aegis]
+# url = "https://aegis.example.com/mcp/sse"
+# bearer_token_env_var = "AEGIS_TOKEN"

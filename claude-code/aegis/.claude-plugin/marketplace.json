@@ -1,0 +1,14 @@
+{
+  "name": "haloforge-aegis",
+  "owner": {
+    "name": "HaloForgeAI",
+    "url": "https://github.com/HaloForgeAI"
+  },
+  "plugins": [
+    {
+      "name": "aegis",
+      "source": "./",
+      "description": "Aegis chief-of-staff inside Claude Code: subagent, skills, MCP tools, live context hook, and compatibility commands."
+    }
+  ]
+}
