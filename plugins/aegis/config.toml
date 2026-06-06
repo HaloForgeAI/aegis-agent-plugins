@@ -5,19 +5,25 @@
 # through the aegis_* tools.
 #
 # ---------------------------------------------------------------------------
-# Option A (recommended): local stdio server via the `aegis-mcp` binary.
-# Build it once with `cargo install --path crates/aegis-mcp` (or `cargo build
-# -p aegis-mcp`) and make sure it is on your PATH.
+# Option A (recommended): Aegis Server over Streamable HTTP.
+# The Codex plugin uses this shape by default for local self-host installs.
 # ---------------------------------------------------------------------------
 [mcp_servers.aegis]
-command = "aegis-mcp"
-# The MCP server talks to the same storage/config as the Aegis server; point it
-# at your data via the AEGIS_* environment variables your deployment uses.
-# env = { AEGIS_SQLITE_PATH = "/path/to/aegis.db" }
+url = "http://localhost:8787/mcp"
+bearer_token_env_var = "AEGIS_TOKEN"
 
 # ---------------------------------------------------------------------------
-# Option B: remote Aegis server over MCP HTTP+SSE (URL + bearer).
+# Option B: remote Aegis Server over Streamable HTTP (URL + bearer).
 # ---------------------------------------------------------------------------
 # [mcp_servers.aegis]
-# url = "https://aegis.example.com/mcp/sse"
+# url = "https://aegis.example.com/mcp"
 # bearer_token_env_var = "AEGIS_TOKEN"
+
+# ---------------------------------------------------------------------------
+# Option C: local stdio server via the `aegis-mcp` binary.
+# Use this only for offline/dev workflows where Codex should bypass
+# `aegis-server`.
+# ---------------------------------------------------------------------------
+# [mcp_servers.aegis]
+# command = "aegis-mcp"
+# env = { AEGIS_SQLITE_PATH = "/path/to/aegis.db" }

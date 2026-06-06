@@ -1,13 +1,8 @@
 {
   "mcpServers": {
     "aegis": {
-      "command": "./scripts/aegis-mcp-stdio.sh",
-      "cwd": ".",
-      "env_vars": [
-        "AEGIS_SQLITE_PATH",
-        "AEGIS_MCP_BIN",
-        "PATH"
-      ],
+      "url": "http://localhost:8787/mcp",
+      "bearer_token_env_var": "AEGIS_TOKEN",
       "startup_timeout_sec": 20,
       "tool_timeout_sec": 120
     }

@@ -7,8 +7,8 @@
 | 路径 | 作用 |
 |---|---|
 | `.codex-plugin/plugin.json` | Codex plugin manifest，打包 Aegis skills |
-| `.mcp.json` | 插件随包声明的 `aegis` MCP server |
-| `scripts/aegis-mcp-stdio.sh` | 在 Codex app 环境里定位并启动 `aegis-mcp` |
+| `.mcp.json` | 插件随包声明的 `aegis` MCP server，默认连接本机 Aegis Server `/mcp` |
+| `scripts/aegis-mcp-stdio.sh` | stdio fallback：在 Codex app 环境里定位并启动 `aegis-mcp` |
 | `assets/` | Aegis 自有 icon / mascot，用于插件展示 |
 | `skills/aegis-operator/` | 操作 Aegis MCP 工具的主 skill |
 | `skills/aegis-gateway-diagnostics/` | Gateway / local worker / delivery 排障 skill |
@@ -34,37 +34,38 @@ codex plugin marketplace add "$(pwd)"
 codex plugin add aegis@aegis-agent-plugins
 ```
 
-2. 准备 Aegis MCP binary。
+2. 准备 Aegis Server MCP。
 
-Codex 插件已经随包声明 `.mcp.json`，会启动 `scripts/aegis-mcp-stdio.sh`。这个 wrapper 会按顺序找：
+Codex 插件已经随包声明 `.mcp.json`，默认连接本机 Aegis Server 的 Streamable HTTP MCP：
 
-- `AEGIS_MCP_BIN`
-- `PATH` 里的 `aegis-mcp`
-- `~/.cargo/bin/aegis-mcp`
-- `/opt/homebrew/bin/aegis-mcp`
-- `/usr/local/bin/aegis-mcp`
-
-如果还没安装：
-
-```bash
-# 在 Aegis 源码仓库根目录执行，或安装发布版 aegis-mcp
-cargo install --path crates/aegis-mcp
+```json
+{
+  "url": "http://localhost:8787/mcp",
+  "bearer_token_env_var": "AEGIS_TOKEN"
+}
 ```
 
-如果 Codex app 仍找不到二进制，可以设置：
+也就是说，公开插件优先使用已有 Aegis 服务，而不是要求本机先安装 `aegis-mcp`。本机启动 Aegis Server 后，设置同一套 REST Bearer token：
 
 ```bash
-export AEGIS_MCP_BIN="$HOME/.cargo/bin/aegis-mcp"
+export AEGIS_TOKEN="<your access token>"
 ```
 
-3. 可选：手动覆盖 MCP 配置。
-
-如果你不想用插件随包的 stdio MCP，可以把 [config.toml](./config.toml) 里的配置合并到 `~/.codex/config.toml`，或项目级 `.codex/config.toml`。远程 Aegis Server 示例：
+如果你要连接远程部署，把 [config.toml](./config.toml) 里的 URL 改成：
 
 ```toml
 [mcp_servers.aegis]
-url = "https://aegis.example.com/mcp/sse"
+url = "https://aegis.example.com/mcp"
 bearer_token_env_var = "AEGIS_TOKEN"
+```
+
+3. 可选：stdio fallback。
+
+如果没有运行 Aegis Server，只想让 Codex 直接跑本机 `aegis-mcp`，可以把 [config.toml](./config.toml) 的 stdio fallback 合并到 `~/.codex/config.toml`：
+
+```toml
+[mcp_servers.aegis]
+command = "aegis-mcp"
 ```
 
 4. 重启 Codex 或开启新线程，确认 `/mcp` 能看到 `aegis`。
@@ -73,8 +74,10 @@ bearer_token_env_var = "AEGIS_TOKEN"
 
 ```bash
 codex plugin list --marketplace aegis-agent-plugins
-printf '%s\n' '{"jsonrpc":"2.0","id":1,"method":"tools/list","params":{}}' \
-  | plugins/aegis/scripts/aegis-mcp-stdio.sh
+curl -sS -H "Authorization: Bearer $AEGIS_TOKEN" \
+  -H "content-type: application/json" \
+  -d '{"jsonrpc":"2.0","id":1,"method":"tools/list","params":{}}' \
+  http://localhost:8787/mcp
 ```
 
 ## 使用方式

@@ -23,12 +23,26 @@ codex plugin marketplace add HaloForgeAI/aegis-agent-plugins
 codex plugin add aegis@aegis-agent-plugins
 ```
 
-The Codex plugin starts `aegis-mcp` through `plugins/aegis/scripts/aegis-mcp-stdio.sh`.
-Install `aegis-mcp` from Aegis first, or set:
+The Codex plugin connects to an existing local Aegis Server through Streamable
+HTTP MCP:
 
 ```bash
-export AEGIS_MCP_BIN="/absolute/path/to/aegis-mcp"
+export AEGIS_TOKEN="<your access token>"
 ```
+
+Default endpoint: `http://localhost:8787/mcp`.
+
+For remote Aegis deployments, configure the same MCP shape with your hosted URL:
+
+```toml
+[mcp_servers.aegis]
+url = "https://aegis.example.com/mcp"
+bearer_token_env_var = "AEGIS_TOKEN"
+```
+
+The packaged stdio wrapper remains available at
+`plugins/aegis/scripts/aegis-mcp-stdio.sh` for offline/development fallback
+workflows.
 
 ## Claude Code Install
 
