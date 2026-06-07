@@ -9,7 +9,9 @@ description: >-
 
 # Aegis Operator For Codex
 
-Operate Aegis through MCP tools, not by guessing state from conversation.
+Operate Aegis state through MCP tools only, not by guessing state from
+conversation or by falling back to the local CLI, REST API, curl, database
+queries, repository files, or shell probes.
 
 ## Start
 
@@ -20,6 +22,10 @@ Operate Aegis through MCP tools, not by guessing state from conversation.
 3. Keep answers grounded in tool output. If a tool is unavailable, say which
    layer is missing: MCP config, auth, server, Gateway, provider planner,
    connected local worker, or tool-ready local worker.
+4. If the required `aegis_*` MCP tool is not callable in the current host, stop
+   and report `mcp_unavailable` or the concrete missing layer. Do not use
+   `aegis` CLI commands, direct HTTP calls, local access-token files, or repo
+   inspection as a substitute for Aegis MCP state.
 
 ## Board Discipline
 
@@ -32,8 +38,14 @@ explicitly says to track them as work.
 
 ## Main Flows
 
+- Discover: `aegis_search_tools` when unsure which Aegis MCP tool applies;
+  `aegis_lifecycle` when unsure about statuses or transitions.
 - Capture: `aegis_create_item`, then optionally `aegis_comment_item`.
-- Triage: `aegis_inbox`, `aegis_advance_item`, `aegis_transition_item`.
+- Triage: `aegis_inbox`, `aegis_advance_item`, `aegis_transition_item`,
+  `aegis_move_item`.
+- Cleanup: `aegis_board`, then `aegis_clear_item` for non-work/accidental
+  board items, or `aegis_delete_item` when the owner explicitly requests
+  deletion.
 - Assign: `aegis_members`, `aegis_add_member`, `aegis_assign_item`.
 - Delegate: `aegis_recruiting_catalog`, `aegis_hire`, `aegis_dispatch`, or
   `aegis_switchboard`.
@@ -54,8 +66,10 @@ Return concise operator-facing prose:
 - Any missing runtime capability as a concrete readiness gap.
 
 Never claim that WebFetch, server-side tools, or MCP calls were a local script.
-It is fine to complete the user goal by a better route; just name the route
-honestly.
+For Aegis board, report, Gateway, member, memory, or worker-state requests,
+there is no non-MCP fallback. Other tools may help diagnose why MCP is missing,
+but they must not be used to answer Aegis state as if the plugin operated
+normally.
 
 ## More Detail
 

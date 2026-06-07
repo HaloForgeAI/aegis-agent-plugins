@@ -90,8 +90,18 @@ curl -sS -H "Authorization: Bearer $AEGIS_TOKEN" \
 
 - 普通问答、天气/时间、一次性脚本、简单提醒，不应自动创建 WorkItem。
 - 只有 durable team work 才进入 Aegis 看板。
-- 看板、成员、Gateway、worker 状态必须来自 `aegis_*` 工具结果。
-- WebFetch、server-side tool、MCP、local worker 都是有效完成路径，但回复里必须诚实说明实际路径。
+- 看板、报告、成员、Gateway、memory/context、worker 状态必须来自
+  `aegis_*` MCP 工具结果。
+- 不确定工具或状态时先用 `aegis_search_tools` / `aegis_lifecycle`；清理
+  误收录事项用 `aegis_clear_item`，明确要求删除时才用
+  `aegis_delete_item(confirm=true)`。
+- 如果当前宿主看不到必需的 `aegis_*` MCP 工具，agent 必须报告具体缺口
+  （MCP 配置、鉴权、server、Gateway、provider planner、connected local
+  worker、tool-ready local worker），不能改用 `aegis` CLI、curl/REST、本地
+  token、数据库、仓库文件或聊天历史来回答 Aegis 状态。
+- WebFetch、server-side tool、local worker 可以用于非 Aegis 状态类任务或
+  MCP 缺口诊断，但不能作为 Aegis 看板/报告/Gateway/worker 状态的替代
+  数据源。
 
 ## 官方依据
 

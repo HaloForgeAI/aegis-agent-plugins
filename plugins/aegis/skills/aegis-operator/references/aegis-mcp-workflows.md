@@ -15,6 +15,23 @@ personal reminder unless the user explicitly wants it tracked as work.
 4. `aegis_report` with `view=standup` or `view=lead`.
 5. Summarize in flight, blocked/at risk, owner decisions, next move.
 
+If any required `aegis_*` MCP tool is unavailable, stop and report the missing
+MCP/readiness layer. Do not replace the status brief with `aegis` CLI output,
+direct REST/curl calls, local token files, database queries, repository
+inspection, or chat-history inference.
+
+## Tool Discovery And Cleanup
+
+1. Use `aegis_search_tools(q=...)` before guessing which Aegis MCP tool exists.
+2. Use `aegis_lifecycle` before guessing valid work item statuses or whether a
+   transition can be direct.
+3. For mistaken captures, read `aegis_board`, identify the exact ids, then call
+   `aegis_clear_item` to remove accidental/non-work items from the open board.
+4. Use `aegis_delete_item` only when the owner explicitly asks to delete
+   accidental items; pass `confirm=true`.
+5. Use `aegis_move_item` for a requested target lifecycle status when
+   `aegis_transition_item` would require multiple one-step transitions.
+
 ## Capture And Assign
 
 1. `aegis_create_item` with a durable title and useful body.

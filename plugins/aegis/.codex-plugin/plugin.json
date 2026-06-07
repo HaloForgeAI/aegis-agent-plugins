@@ -1,6 +1,6 @@
 {
   "name": "aegis",
-  "version": "0.2.2",
+  "version": "0.2.3+codex.20260606234921",
   "description": "Aegis chief-of-staff workflows for Codex: operate the Aegis MCP tools, manage durable work, review status, and diagnose Gateway/local worker readiness.",
   "author": {
     "name": "HaloForgeAI",

@@ -1,6 +1,6 @@
 {
   "name": "aegis",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Aegis — a chief-of-staff plugin for Claude Code. Includes an Aegis subagent, operator and Gateway diagnostics skills, MCP wiring, session context hooks, and compatibility commands.",
   "author": {
     "name": "HaloForgeAI",

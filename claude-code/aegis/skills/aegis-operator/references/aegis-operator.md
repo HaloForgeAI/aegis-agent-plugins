@@ -12,9 +12,15 @@
 ## Capture And Cleanup
 
 Create a WorkItem only when the request is durable. For accidental captures,
-read the board, identify non-work items, then use the host's clear/delete API
-when available. If only MCP board tools are available, park/comment real work
-and tell the owner which accidental items need UI/API cleanup.
+use `aegis_search_tools` or `aegis_lifecycle` if the cleanup/status tool is
+unclear, read the board with `aegis_board`, identify non-work items, then use
+`aegis_clear_item`. Use `aegis_delete_item` with `confirm=true` only when the
+owner explicitly asks to delete accidental items. If those MCP tools are not
+available, stop and tell the owner which accidental items need cleanup; do not
+fall back to CLI, REST/curl, database, or token-file state.
+
+Use `aegis_move_item` when the owner names a target lifecycle status and a
+strict `aegis_transition_item` would require several one-step transitions.
 
 ## Assign And Dispatch
 

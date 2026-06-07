@@ -44,6 +44,8 @@ The packaged stdio wrapper remains available at
 `plugins/aegis/scripts/aegis-mcp-stdio.sh` for offline/development fallback
 workflows.
 
+Release notes live in [CHANGELOG.md](./CHANGELOG.md).
+
 ## Claude Code Install
 
 From a local checkout of this repository:

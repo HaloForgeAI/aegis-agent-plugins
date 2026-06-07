@@ -7,6 +7,8 @@ Use the actual tools exposed by `crates/aegis-mcp/src/server.rs`.
 | Tool | Use |
 |---|---|
 | `aegis_mcp_status` | Check protocol, tenant scope, Gateway availability, resources, prompts, and tool count. |
+| `aegis_search_tools` | Search the Aegis MCP tool catalog by query. |
+| `aegis_lifecycle` | List work item statuses, lifecycle rules, and cleanup tools. |
 
 ## Board
 
@@ -16,7 +18,10 @@ Use the actual tools exposed by `crates/aegis-mcp/src/server.rs`.
 | `aegis_board` | none | List open work items. |
 | `aegis_inbox` | none | List untriaged items. |
 | `aegis_advance_item` | `id` | Move one normal lifecycle step. |
-| `aegis_transition_item` | `id`, `to` | Move to a specific status. Status values are lowercase. |
+| `aegis_transition_item` | `id`, `to` | Move one legal transition. Status values are lowercase. |
+| `aegis_move_item` | `id`, `to` | Walk legal lifecycle transitions to a target status. |
+| `aegis_clear_item` | `id` | Remove a non-work/accidental item from the open board while preserving its record. |
+| `aegis_delete_item` | `id`, `confirm=true` | Permanently delete an accidental item when the owner explicitly asks. |
 | `aegis_assign_item` | `id`, `assignee` | Assign by member id. |
 | `aegis_comment_item` | `id`, `text` | Add timeline evidence or context. |
 | `aegis_suggestions` | none | Review advisory transitions inferred from recent activity. |
