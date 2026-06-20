@@ -3,8 +3,8 @@
 #
 # Pulls a short snapshot of the team's current state from a running Aegis
 # server and injects it as session context, so Aegis (and you) start each
-# session already aware of what is in flight — like a real chief-of-staff who
-# read the board before the meeting.
+# session already aware of what is in flight, like a careful assistant who read
+# the board before the meeting.
 #
 # Configuration (all optional; the hook is a silent no-op if unset):
 #   AEGIS_URL    Base URL of the Aegis server (e.g. https://aegis.example.com)

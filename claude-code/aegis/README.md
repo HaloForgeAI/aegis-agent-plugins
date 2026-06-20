@@ -1,6 +1,6 @@
 # Aegis for Claude Code
 
-这个目录是 Aegis 的 Claude Code 插件包。它不只是一个人格 prompt，而是把 Aegis 作为 chief-of-staff 接进 Claude Code：subagent、skills、MCP、SessionStart live context hook、兼容 slash commands 都在这里。
+这个目录是 Aegis 的 Claude Code 插件包。它不只是一个人格 prompt，而是把 Aegis 作为强助手接进 Claude Code：subagent、skills、MCP、SessionStart live context hook、兼容 slash commands 都在这里。
 
 ## 包含内容
 

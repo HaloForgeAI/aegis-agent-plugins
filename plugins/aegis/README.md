@@ -1,6 +1,6 @@
 # Aegis for Codex
 
-这个目录把 Aegis 接进 Codex，目标不是只给 Codex 一个提示词，而是提供一套可复用的 chief-of-staff 工作入口。
+这个目录把 Aegis 接进 Codex，目标不是只给 Codex 一个提示词，而是提供一套可复用的强助手工作入口。
 
 ## 包含内容
 

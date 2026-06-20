@@ -27,7 +27,7 @@ Be precise about the failing layer. "Gateway connected" is not the same as
 Use these labels in the answer:
 
 - `mcp_unavailable`: Codex cannot see the Aegis MCP server.
-- `auth_or_tenant_scope`: MCP/server responds but token or tenant scope is wrong.
+- `auth_or_owner_scope`: MCP/server responds but token or owner/profile scope is wrong.
 - `server_side_ready`: server-side tools can act even if local worker cannot.
 - `gateway_account_unhealthy`: platform account/binding/delivery health issue.
 - `worker_connected_not_tool_ready`: a worker heartbeat exists but declared

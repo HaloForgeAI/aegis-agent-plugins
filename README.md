@@ -1,7 +1,7 @@
 # Aegis Agent Plugins
 
-Public agent integration packages for Aegis, the AI chief-of-staff and team
-operating system.
+Public agent integration packages for Aegis, the AI assistant and work
+operating companion.
 
 This repository intentionally contains only distributable plugin and skill
 materials. It does not publish the private Aegis application source code. The

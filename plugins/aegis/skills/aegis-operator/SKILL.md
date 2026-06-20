@@ -1,7 +1,7 @@
 ---
 name: aegis-operator
 description: >-
-  Use Aegis from Codex as an AI chief-of-staff. Trigger when the user asks to
+  Use Aegis from Codex as an AI assistant. Trigger when the user asks to
   inspect, capture, triage, assign, dispatch, report, clean up, or diagnose
   Aegis work through the configured aegis MCP server. Do not trigger for simple
   one-off chat unless Aegis state should be read or changed.
@@ -15,7 +15,7 @@ queries, repository files, or shell probes.
 
 ## Start
 
-1. If connection, tenant, Gateway, worker, or tool readiness matters, call
+1. If connection, owner/profile scope, Gateway, worker, or tool readiness matters, call
    `aegis_mcp_status`.
 2. For board/state work, call `aegis_board` before changing anything. Add
    `aegis_members`, `aegis_nudges`, or `aegis_team_health` when relevant.

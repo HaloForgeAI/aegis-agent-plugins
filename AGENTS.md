@@ -6,7 +6,7 @@ installer-friendly and free of private Aegis implementation code.
 ## Boundaries
 
 - Do not copy Aegis server, worker, database, or internal product source here.
-- Do not commit tokens, tenant ids, local database paths, private screenshots,
+- Do not commit tokens, owner/profile ids, local database paths, private screenshots,
   or generated runtime ledgers.
 - Agent hosts may include prompts, skills, commands, hooks, assets, MCP config,
   and wrapper scripts.

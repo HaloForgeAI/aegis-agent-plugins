@@ -27,7 +27,7 @@ the layer precisely.
 Use the most accurate label:
 
 - `mcp_unavailable`
-- `auth_or_tenant_scope`
+- `auth_or_owner_scope`
 - `server_side_ready`
 - `gateway_account_unhealthy`
 - `worker_connected_not_tool_ready`

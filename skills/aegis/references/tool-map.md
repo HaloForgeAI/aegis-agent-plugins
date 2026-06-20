@@ -6,7 +6,7 @@ Use the actual tools exposed by `crates/aegis-mcp/src/server.rs`.
 
 | Tool | Use |
 |---|---|
-| `aegis_mcp_status` | Check protocol, tenant scope, Gateway availability, resources, prompts, and tool count. |
+| `aegis_mcp_status` | Check protocol, owner/profile scope, Gateway availability, resources, prompts, and tool count. |
 | `aegis_search_tools` | Search the Aegis MCP tool catalog by query. |
 | `aegis_lifecycle` | List work item statuses, lifecycle rules, and cleanup tools. |
 

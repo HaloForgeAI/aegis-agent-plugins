@@ -1,7 +1,7 @@
 ---
 name: aegis
 description: >-
-  Operate Aegis, an AI chief-of-staff for personal owner work and small-team
+  Operate Aegis, an AI assistant for personal owner work and small-team
   execution. Use when the user wants to capture durable work, triage or clean a
   board, assign real or virtual members, dispatch Aegis Coder/local workers,
   review status, manage memory/context candidates, or diagnose Gateway/local
